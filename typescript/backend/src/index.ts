@@ -5,55 +5,55 @@ import cors from 'cors';
 const app = express();
 const PORT = 3333;
 
-interface repositoryData {
+app.use(express.json());
+app.use(cors());
+
+interface projectData {
 	id: string;
 	title: string;
 	owner: string;
 }
 
-const repositories: repositoryData[] = [];
-
-app.use(express.json());
-app.use(cors());
+const projects: projectData[] = [];
 
 app.get('/projects', (request, response) => {
-	return response.json(repositories);
+	return response.json(projects);
 });
 
 app.post('/projects', (request, response) => {
 	try {
 		const { title, owner } = request.body;
-		const repository = {
+		const project = {
 			id: uuid(),
 			title,
 			owner,
 		};
-		repositories.push(repository);
-		return response.status(200).json(repository);
+		projects.push(project);
+		return response.status(200).json(projects);
 	} catch (error) {
 		return response.status(400).send(error);
 	}
 });
 
-app.put('/repositories/:id', (request, response) => {
+app.put('/projects/:id', (request, response) => {
 	const { id } = request.params;
 	const { title, owner } = request.body;
 
-	const findIndex = repositories.findIndex(repository => repository.id === id);
-	repositories[findIndex] = {
+	const findIndex = projects.findIndex(project => project.id === id);
+	projects[findIndex] = {
 		id,
 		title,
 		owner,
 	};
-	return response.status(200).json(repositories[findIndex]);
+	return response.status(200).json(projects[findIndex]);
 });
 
-app.delete('/repositories/:id', (request, response) => {
+app.delete('/projects/:id', (request, response) => {
 	const { id } = request.params;
-	const findIndex = repositories.findIndex(repository => repository.id === id);
-	repositories.splice(findIndex, 1);
+	const findIndex = projects.findIndex(project => project.id === id);
+	projects.splice(findIndex, 1);
 	return response.status(200).json({
-		message: 'Repository deleted',
+		message: 'Project deleted',
 		id,
 	});
 });
