@@ -11,6 +11,7 @@ The purpose of this project is to create from beginning an API integrated with R
 <li>React;</li>
 <li>React-Native;</li>
 <li>Axios;</li>
+ <li>TypeScript;</li>
 </ul>
 
 <h2>:man_technologist: Features</h2>
