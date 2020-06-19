@@ -8,8 +8,8 @@ var uuidv4_1 = require("uuidv4");
 var cors_1 = __importDefault(require("cors"));
 var app = express_1.default();
 var PORT = 3333;
-app.use(express_1.default.json());
 app.use(cors_1.default());
+app.use(express_1.default.json());
 var projects = [];
 app.get('/projects', function (request, response) {
     return response.json(projects);
