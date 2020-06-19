@@ -3,8 +3,6 @@ import api from './services/api';
 
 import './App.css';
 
-import Header from './components/Header';
-
 function App() {
 	const [projects, setProjects] = useState([]);
 
@@ -16,25 +14,66 @@ function App() {
 
 	async function handleAddProject() {
 		const response = await api.post('projects', {
-			title: `Novo projeto ${Date.now()}`,
-			owner: 'Victor França C. de Lima',
+			title: `Project #${Date.now()}`,
+			owner: 'Victor França Cavalcanti de Lima',
 		});
 
 		const project = response.data;
 		setProjects([...projects, project]);
 	}
 
+	async function handleDeleteProject(id) {
+		await api.delete(`projects/${id}`);
+		const updateProjects = projects.filter(project => project.id !== id);
+		setProjects(updateProjects);
+	}
+
+	function handleDeleteAllProjects() {
+		if (window.confirm('Delete all projects?')) {
+			projects.map(project => {
+				return api.delete(`projects/${project.id}`);
+			});
+			const updateProjects = projects.filter(project => '');
+			setProjects(updateProjects);
+		}
+	}
+
 	return (
 		<>
-			<Header title='Projects'></Header>
+			<button type='button' className='addButton' onClick={handleAddProject}>
+				Add new project
+			</button>
+			<button
+				type='button'
+				className='addButton'
+				onClick={handleDeleteAllProjects}
+			>
+				Delete all projects
+			</button>
 			<ul>
 				{projects.map(project => {
-					return <li key={project.id}>{project.title}</li>;
+					return (
+						<li key={project.id} className='projectContainer'>
+							<div className='projectHeader'>
+								<p className='projectTitle'>{project.title}</p>
+								<button
+									type='button'
+									className='deleteButton'
+									onClick={() => handleDeleteProject(project.id)}
+								>
+									X
+								</button>
+							</div>
+							<div className='projectOwner'>
+								<p className='projectOwner'>{project.owner}</p>
+							</div>
+							<div className='projectFooter'>
+								<p className='projectId'>#{project.id}</p>
+							</div>
+						</li>
+					);
 				})}
 			</ul>
-			<button type='button' onClick={handleAddProject}>
-				Adicionar projeto
-			</button>
 		</>
 	);
 }
