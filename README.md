@@ -1,7 +1,7 @@
-<h1>:open_file_folder: Creating an API with NodeJS, Express, React, React-Native and axios</h1>
+<h1 align="center">API - NodeJS, React, React-Native and TypeScript</h1>
 
 <h2>:computer: About</h2>
-This project was developed to create an API possible to integrate with Front-end developed with React and mobile developed with React-Native.
+This project was developed to create an API possible to integrate with front-end (React) and mobile (React-Native). There is also a version using TypeScript.
 
 ---
 
@@ -33,7 +33,7 @@ This project was developed to create an API possible to integrate with Front-end
 
 <h2>:heavy_check_mark: Check the project</h2>
 
-## Initializing API (back-end)
+#### Initializing API (back-end)
 ```bash
 # Step 1 (clone the repository):
 
@@ -50,9 +50,11 @@ $ yarn dev
 
 # Step 4 (check with insomnia or postman)
 ```
+![back-end-preview](.preview/backendnodejs.gif)
+
 ---
 
-## Initializing React (front-end)
+#### Initializing React (front-end)
 ```bash
 # Step 1 (acess the front-end folder):
 
@@ -71,10 +73,11 @@ $ yarn dev
 
 http://localhost:8080/
 ```
+![front-end-preview](.preview/frontendreact.gif)
 
 ---
 
-## Initializing React-Native (mobile)
+#### Initializing React-Native (mobile)
 ```bash
 # Step 1 (acess the mobile folder):
 
@@ -93,6 +96,8 @@ $ yarn start
 
 yarn android
 ```
+
+![mobile-preview](.preview/mobile.gif)
 
 
 
