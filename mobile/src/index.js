@@ -65,7 +65,7 @@ export default function App() {
 					style={styles.button}
 					onPress={handleAddProject}
 				>
-					<Text style={styles.buttonText}>ADICIONAR PROJETO</Text>
+					<Text style={styles.buttonText}>ADD NEW PROJECT</Text>
 				</TouchableOpacity>
 			</SafeAreaView>
 		</>
@@ -78,14 +78,8 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 
-	title: {
-		color: 'white',
-		fontSize: 20,
-		fontWeight: 'bold',
-	},
-
 	project: {
-		color: '#FFF',
+		color: '#2A2A2A',
 		fontSize: 20,
 	},
 
@@ -93,7 +87,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#FFF',
 		margin: 20,
 		height: 50,
-		borderRadius: 4,
+		borderRadius: 8,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
@@ -124,5 +118,10 @@ const styles = StyleSheet.create({
 	row: {
 		flexDirection: 'row',
 		alignItems: 'center',
+		backgroundColor: 'white',
+		borderRadius: 8,
+		marginHorizontal: 10,
+		marginVertical: 15,
+		paddingHorizontal: 10,
 	},
 });
